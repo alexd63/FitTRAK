@@ -14,6 +14,8 @@
 		B96AADD529EC776100936430 /* FitTRAKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AADD429EC776100936430 /* FitTRAKTests.swift */; };
 		B96AADDF29EC776100936430 /* FitTRAKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AADDE29EC776100936430 /* FitTRAKUITests.swift */; };
 		B96AADE129EC776100936430 /* FitTRAKUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AADE029EC776100936430 /* FitTRAKUITestsLaunchTests.swift */; };
+		B96AADF029EC82CC00936430 /* TRAKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AADEF29EC82CC00936430 /* TRAKView.swift */; };
+		B96AADF229EC837200936430 /* FitnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AADF129EC837200936430 /* FitnessView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		B96AADDA29EC776100936430 /* FitTRAKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitTRAKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B96AADDE29EC776100936430 /* FitTRAKUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitTRAKUITests.swift; sourceTree = "<group>"; };
 		B96AADE029EC776100936430 /* FitTRAKUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitTRAKUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B96AADEF29EC82CC00936430 /* TRAKView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRAKView.swift; sourceTree = "<group>"; };
+		B96AADF129EC837200936430 /* FitnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 			children = (
 				B96AADC329EC775F00936430 /* FitTRAKApp.swift */,
 				B96AADC529EC775F00936430 /* ContentView.swift */,
+				B96AADF129EC837200936430 /* FitnessView.swift */,
+				B96AADEF29EC82CC00936430 /* TRAKView.swift */,
 				B96AADC729EC776100936430 /* Assets.xcassets */,
 				B96AADC929EC776100936430 /* Preview Content */,
 			);
@@ -259,6 +265,8 @@
 			files = (
 				B96AADC629EC775F00936430 /* ContentView.swift in Sources */,
 				B96AADC429EC775F00936430 /* FitTRAKApp.swift in Sources */,
+				B96AADF029EC82CC00936430 /* TRAKView.swift in Sources */,
+				B96AADF229EC837200936430 /* FitnessView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

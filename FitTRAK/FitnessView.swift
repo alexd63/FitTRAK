@@ -15,3 +15,9 @@ struct FitnessView: View {
         }
     }
 }
+
+struct FitnessView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

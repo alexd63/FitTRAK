@@ -16,6 +16,7 @@
 		B96AADE129EC776100936430 /* FitTRAKUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AADE029EC776100936430 /* FitTRAKUITestsLaunchTests.swift */; };
 		B96AADF029EC82CC00936430 /* TRAKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AADEF29EC82CC00936430 /* TRAKView.swift */; };
 		B96AADF229EC837200936430 /* FitnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AADF129EC837200936430 /* FitnessView.swift */; };
+		B96AADFC29ECD3BD00936430 /* NavigationViewDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AADFB29ECD3BD00936430 /* NavigationViewDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		B96AADE029EC776100936430 /* FitTRAKUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitTRAKUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B96AADEF29EC82CC00936430 /* TRAKView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRAKView.swift; sourceTree = "<group>"; };
 		B96AADF129EC837200936430 /* FitnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessView.swift; sourceTree = "<group>"; };
+		B96AADFB29ECD3BD00936430 /* NavigationViewDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				B96AADC329EC775F00936430 /* FitTRAKApp.swift */,
 				B96AADC529EC775F00936430 /* ContentView.swift */,
+				B96AADFB29ECD3BD00936430 /* NavigationViewDetails.swift */,
 				B96AADF129EC837200936430 /* FitnessView.swift */,
 				B96AADEF29EC82CC00936430 /* TRAKView.swift */,
 				B96AADC729EC776100936430 /* Assets.xcassets */,
@@ -267,6 +270,7 @@
 				B96AADC429EC775F00936430 /* FitTRAKApp.swift in Sources */,
 				B96AADF029EC82CC00936430 /* TRAKView.swift in Sources */,
 				B96AADF229EC837200936430 /* FitnessView.swift in Sources */,
+				B96AADFC29ECD3BD00936430 /* NavigationViewDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

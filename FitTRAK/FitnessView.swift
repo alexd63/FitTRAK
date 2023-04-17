@@ -10,9 +10,15 @@ import SwiftUI
 
 struct FitnessView: View {
     var body: some View{
-        HStack{
-            Text("This is the fitness view!")
+        ZStack{
+            NavigationViewDetails(title: "Fitness", leadingToolbarItem: "gear", trailingToolbarItem: "person.fill"){
+                VStack{
+                    Text("test")
+                }
+            }
+            
         }
+
     }
 }
 

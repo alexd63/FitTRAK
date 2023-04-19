@@ -12,9 +12,7 @@ struct FitnessView: View {
     var body: some View{
         ZStack{
             NavigationViewDetails(title: "Fitness", leadingToolbarItem: "gear", trailingToolbarItem: "person.fill"){
-                VStack{
-                    Text("test")
-                }
+                VStack{}
             }
             
         }

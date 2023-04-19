@@ -20,7 +20,7 @@ struct NavigationViewDetails<Content: View>: View {
                 .toolbar{
                     ToolbarItem(placement: .navigationBarLeading){
                         Button(action: {
-                            print("placeholder print")
+                            print("settings pressed")
                         }, label: {
                             Image(systemName: leadingToolbarItem)
                         })
@@ -31,7 +31,7 @@ struct NavigationViewDetails<Content: View>: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing){
                         Button(action: {
-                            print("profile button")
+                            print("profile pressed")
                         }, label: {
                             Image(systemName: trailingToolbarItem)
                         })

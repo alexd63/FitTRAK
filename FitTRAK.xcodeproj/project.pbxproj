@@ -17,6 +17,8 @@
 		B96AADF029EC82CC00936430 /* TRAKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AADEF29EC82CC00936430 /* TRAKView.swift */; };
 		B96AADF229EC837200936430 /* FitnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AADF129EC837200936430 /* FitnessView.swift */; };
 		B96AADFC29ECD3BD00936430 /* NavigationViewDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AADFB29ECD3BD00936430 /* NavigationViewDetails.swift */; };
+		B96AADFE29F1BFEF00936430 /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AADFD29F1BFEF00936430 /* UserDetails.swift */; };
+		B96AAE0029F1DA1300936430 /* FontModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AADFF29F1DA1300936430 /* FontModifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		B96AADEF29EC82CC00936430 /* TRAKView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRAKView.swift; sourceTree = "<group>"; };
 		B96AADF129EC837200936430 /* FitnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessView.swift; sourceTree = "<group>"; };
 		B96AADFB29ECD3BD00936430 /* NavigationViewDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewDetails.swift; sourceTree = "<group>"; };
+		B96AADFD29F1BFEF00936430 /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
+		B96AADFF29F1DA1300936430 /* FontModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontModifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 				B96AADFB29ECD3BD00936430 /* NavigationViewDetails.swift */,
 				B96AADF129EC837200936430 /* FitnessView.swift */,
 				B96AADEF29EC82CC00936430 /* TRAKView.swift */,
+				B96AADFF29F1DA1300936430 /* FontModifiers.swift */,
+				B96AADFD29F1BFEF00936430 /* UserDetails.swift */,
 				B96AADC729EC776100936430 /* Assets.xcassets */,
 				B96AADC929EC776100936430 /* Preview Content */,
 			);
@@ -266,11 +272,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B96AAE0029F1DA1300936430 /* FontModifiers.swift in Sources */,
 				B96AADC629EC775F00936430 /* ContentView.swift in Sources */,
 				B96AADC429EC775F00936430 /* FitTRAKApp.swift in Sources */,
 				B96AADF029EC82CC00936430 /* TRAKView.swift in Sources */,
 				B96AADF229EC837200936430 /* FitnessView.swift in Sources */,
 				B96AADFC29ECD3BD00936430 /* NavigationViewDetails.swift in Sources */,
+				B96AADFE29F1BFEF00936430 /* UserDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

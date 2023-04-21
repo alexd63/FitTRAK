@@ -14,7 +14,7 @@ struct TRAKView: View {
         darkMode ? Color.black : Color.white
     }
     private var sectionsColor: Color {
-        darkMode ? Color.white : Color.black
+        darkMode ? Color.gray : Color.black
     }
 
     private var cornerSectionsSize = CGSize(width: 15, height: 15)
@@ -43,6 +43,8 @@ struct TRAKView: View {
             }
         }
     }
+    
+    
     func sections(sectionName: String, sectionCount: Int) -> some View{
         GeometryReader{ geometry in
             ZStack{
@@ -50,6 +52,7 @@ struct TRAKView: View {
                 print("section button pressed!")
             }, label: {
                 ZStack{
+                    //Rectangle sections
                     HStack{
                         RoundedRectangle(cornerSize: CGSize(width: 18, height: 18))
                         
@@ -60,14 +63,22 @@ struct TRAKView: View {
                         caloriesSection(sectionName: sectionName)
                     }
                     if sectionName == "Macros"{
+                        macrosSection(sectionName: sectionName)
                         
                     }
+                
                 }
             })
             .frame(maxWidth: .infinity, maxHeight: .infinity)
               
 
         }
+            if sectionName == "Macros"{
+                infoButton()
+                    .padding(.top, geometry.size.height * 1.5)
+                    .padding(.trailing, geometry.size.width * 0.1)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+            }
             
         }
     }
@@ -84,7 +95,7 @@ struct TRAKView: View {
             .padding(.leading, 55)
             .padding(.bottom, 20)
             
-            //Progress bars(Calories)
+            //Progress bars
             ZStack(alignment: .leading){
                 
                 //Background Bar
@@ -108,6 +119,64 @@ struct TRAKView: View {
                 .foregroundColor(.white)
                 .customFont(size: 25)
         }
+    }
+    
+    func macrosSection(sectionName: String) -> some View{
+        var cornerRadius: CGSize = CGSize(width: 5, height: 5)
+       return VStack(spacing: 0){
+                HStack(){
+                    Text(sectionName)
+                        .foregroundColor(.white)
+                        .customFont(size: 18)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    
+                }
+                .padding(.leading, 55)
+                .padding(.bottom, 10)
+                
+                //Progress bars
+                HStack(spacing: 70){
+                    ZStack(alignment: .leading){
+                        RoundedRectangle(cornerSize: cornerRadius)
+                            .frame(maxWidth: 40, maxHeight: 60)
+                            .foregroundColor(.white)
+                    }
+                    ZStack(alignment: .leading){
+                        RoundedRectangle(cornerSize: cornerRadius)
+                            .frame(maxWidth: 40, maxHeight: 60)
+                            .foregroundColor(.white)
+                    }
+                    ZStack(alignment: .leading){
+                        RoundedRectangle(cornerSize: cornerRadius)
+                            .frame(maxWidth: 40, maxHeight: 60)
+                            .foregroundColor(.white)
+                    }
+                }
+                HStack(spacing: 98){
+                    
+                    Text("C")
+                        .foregroundColor(.white)
+                        .customFont(size: 20)
+                    Text("F")
+                        .foregroundColor(.white)
+                        .customFont(size: 20)
+                    Text("P")
+                        .foregroundColor(.white)
+                        .customFont(size: 20)
+                        
+                }.padding(.top, 8)
+                
+            }
+    }
+    func infoButton() -> some View {
+        Button(action: {
+        print("Test")
+        }, label: {
+            Image(systemName: "info.circle")
+                .background(Rectangle().fill(Color.clear))
+        })
+        .foregroundColor(.blue)
     }
 }
 

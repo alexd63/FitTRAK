@@ -8,6 +8,13 @@
 import Foundation
 import SwiftUI
 
+enum SectionNames: String, CaseIterable {
+    case calories = "Calories"
+    case macros = "Macros"
+    case water = "Water"
+    case logs = "Logs"
+}
+
 struct TRAKView: View {
     private var darkMode: Bool
     private var backgroundColor: Color {
@@ -22,7 +29,9 @@ struct TRAKView: View {
     private var frameSectionsWidth = CGFloat(350)
     private var frameSectionsHeight = CGFloat(150)
         
-    private var sectionNames = ["Calories", "Macros", "Three", "Four", "Five", "Six"]
+//    private var sectionNames = ["Calories", "Macros", "Water", "Logs", "Five", "Six"]
+    private var sectionIndex = 0 //keep track of
+    
 
     init(darkMode: Bool){
         self.darkMode = darkMode
@@ -34,23 +43,22 @@ struct TRAKView: View {
                 ScrollView{
                     ZStack{
                         VStack(spacing: 165){
-                            ForEach(0..<5) { sectionCount in
-                                sections(sectionName: sectionNames[sectionCount], sectionCount: sectionCount)
+                            addHorizontalSections(sectionNames: [SectionNames.calories.rawValue, SectionNames.macros.rawValue])
                                     .allowsHitTesting(infoCardShowing ? false : true) // dont allow section to be pressed
-                            }
-                        }
-                        
-                        if infoCardShowing {
-                            infoCardView()
+
+                            
                         }
                     }
                 }
+            }
+            if infoCardShowing {
+                infoCardView()
             }
         }
     }
     
     
-    func sections(sectionName: String, sectionCount: Int) -> some View{
+    func addHorizontalSections(sectionNames: [String]) -> some View{
         let sectionsCornerRadius = 18.0
         
         let sectionsWidthMultiplier = 0.9
@@ -59,43 +67,52 @@ struct TRAKView: View {
         let infoButtonTopPad = 1.5
         let infoButtonRightPad = 0.1
         return GeometryReader{ geometry in
-            ZStack{
-                
-            Button(action: {
-                print("section button pressed!")
-            }, label: {
-                ZStack{
-                    //Rectangle sections
-                    HStack{
-                        RoundedRectangle(cornerRadius: sectionsCornerRadius)
+            VStack{
+                ForEach(sectionNames.indices, id: \.self){
+                    let sectionName = sectionNames[$0]
+                    ZStack{
+                        Button(action: {
+                            print("section button pressed!")
+                        }, label: {
+                            ZStack{
+                                //Rectangle sections
+                                HStack{
+                                    RoundedRectangle(cornerRadius: sectionsCornerRadius)
+                                        .frame(width: geometry.size.width * sectionsWidthMultiplier, height: geometry.size.height * sectionsHeightMultplier)
+                                        .foregroundColor(sectionsColor)
+                                }
+                                if sectionName == "Calories" {
+                                    caloriesSectionUI(sectionName: sectionName)
+                                }
+                                if sectionName == "Macros"{
+                                    ZStack{
+                                        macrosSectionUI(sectionName: sectionName)
+                                        infoButton()
+                                            .padding(.top, geometry.size.height * infoButtonTopPad)
+                                            .padding(.trailing, geometry.size.width * infoButtonRightPad)
+                                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                                    }
+                                    
+                                }
+                                
+                            }
+                        })
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                         
-                            .frame(width: geometry.size.width * sectionsWidthMultiplier, height: geometry.size.height * sectionsHeightMultplier)
-                            .foregroundColor(sectionsColor)
-                    }
-                    if sectionName == "Calories" {
-                        caloriesSection(sectionName: sectionName)
-                    }
-                    if sectionName == "Macros"{
-                        macrosSection(sectionName: sectionName)
                         
                     }
-                
+                    
+ 
                 }
-            })
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-              
-
-        }
-            if sectionName == "Macros"{
-                infoButton()
-                    .padding(.top, geometry.size.height * infoButtonTopPad)
-                    .padding(.trailing, geometry.size.width * infoButtonRightPad)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
             }
         }
     }
     
-    func caloriesSection(sectionName: String) -> some View {
+//    func rowWithColumns(columnNames: [String]) -> some View {
+//
+//    }
+    
+    func caloriesSectionUI(sectionName: String) -> some View {
         //var cornerRadius: CGSize = CGSize(width: 5, height: 5)
         VStack(spacing: 0){
             HStack(alignment: .top){
@@ -133,7 +150,7 @@ struct TRAKView: View {
         }
     }
     
-    func macrosSection(sectionName: String) -> some View{
+    func macrosSectionUI(sectionName: String) -> some View{
         let macrosCornerRadius: CGSize = CGSize(width: 5, height: 5)
         let macrosTextSize = 18.0
         let macrosLeftPad = 55.0
@@ -248,6 +265,14 @@ struct TRAKView: View {
         }
     }
     
+//    func waterAndLogs() -> some View {
+//        GeometryReader{ geometry in
+//            RoundedRectangle(cornerRadius: 20)
+//                .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height )
+//        }
+//    }
+
+
 }
 
 

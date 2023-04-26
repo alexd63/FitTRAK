@@ -8,16 +8,18 @@
 import SwiftUI
 
 
+
 struct ContentView: View {
     @State private var selectedTheme = 0
-    @State private var darkMode = false
+//    @State private var darkMode = false
     @Environment (\.colorScheme) var colorScheme
+    @StateObject var colorTheme = ColorTheme()
     
     
     var body: some View {
         ZStack{
             TabView(selection: $selectedTheme) {
-                TRAKView(darkMode: darkMode)
+                TRAKView(colorTheme: colorTheme)
                     .tabItem{
                         Text("TRAK")
                         Image(systemName: "bolt")
@@ -37,10 +39,10 @@ struct ContentView: View {
             .onAppear(){
                 print(colorScheme.hashValue)
                 if colorScheme == .dark{
-                    darkMode = true
+                    colorTheme.darkMode = true
                     print("dark mode set to true")
                 } else {
-                    darkMode = false
+                    colorTheme.darkMode = false
                     print("dark mode set to false")
                     
                 }
@@ -48,10 +50,10 @@ struct ContentView: View {
             }
             .onChange(of: colorScheme, perform: { newThemeValue in
                 if newThemeValue == .dark{
-                    darkMode = true
+                    colorTheme.darkMode = true
                     print("dark mode set to true")
                 } else {
-                    darkMode = false
+                    colorTheme.darkMode = false
                     print("dark mode set to false")
                     
                 }

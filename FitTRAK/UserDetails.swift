@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import HealthKit
 
 class UserDetails {
     //Main user parameters

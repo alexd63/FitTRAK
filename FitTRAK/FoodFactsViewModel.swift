@@ -17,6 +17,8 @@ class FoodFactsViewModel: ObservableObject {
     
     @Published var barcodeData: BarcodeData?
     @Published var nameSearch: NameSearch?
+    @Published var didFail = false
+
     
     struct BarcodeData: Codable {
         var code: String?
@@ -218,6 +220,7 @@ class FoodFactsViewModel: ObservableObject {
         
         guard let url = URL(string: urlString) else {
             print("Could not create a URL")
+            didFail = true
             return
         }
         print("It got created!")
@@ -243,6 +246,7 @@ class FoodFactsViewModel: ObservableObject {
             if isBarcode {
                 guard let barcodeData = try? JSONDecoder().decode(BarcodeData.self, from: data) else {
                     print("JSON ERROR: Could not decode returned JSON data for Barcode")
+                    didFail = true
                     return
                 }
                 print("FIRST GUARD PASSED")
@@ -259,6 +263,8 @@ class FoodFactsViewModel: ObservableObject {
 
                 guard let nameSearch = try? JSONDecoder().decode(NameSearch.self, from: data) else {
                     print("JSON ERROR: Could not decode returned JSON data for NameSearch")
+                    didFail = true
+                    print("\(didFail)")
                     return
                 }
                 
@@ -272,10 +278,11 @@ class FoodFactsViewModel: ObservableObject {
 //                for product in nameSearch.products {
 //                    print("PRODUCT: \(product.productName)")
 //                }
-
             }
         } catch {
             print("ERROR: Could not use URL at \(urlString) to get data and response")
+            didFail = true
         }
+
     }
 }

@@ -11,7 +11,6 @@ struct LogView: View {
     @State var query = ""
     @StateObject var foodFactsVM = FoodFactsViewModel()
     @State var showingSheet = false
-//    var logDetails = LogDetails()
     
     
     var body: some View {
@@ -20,6 +19,10 @@ struct LogView: View {
                 Spacer()
                 TextField("Search for Food or Enter Barcode #", text: $query)
                     .onSubmit{
+                        foodFactsVM.didFail = false
+                        if query.rangeOfCharacter(from: .whitespaces) != nil {
+                            query = query.replacingOccurrences(of: " ", with: "+")
+                        }
                         submitData()
                     }
 //                    .onChange(of: query, perform: { _ in
@@ -55,37 +58,42 @@ struct LogView: View {
                 Text("IS DATA VALID: N/A")
                 
             }
+            
 //            else{
 //                Text("IS DATA VALID: \(foodFactsVM.isDataValid?.description ?? "false")")
 //            }
 //
             
             List() {
-                ForEach(foodFactsVM.nameSearch?.products ?? []){ product in
+                
+                if !foodFactsVM.didFail {
+                    ForEach(foodFactsVM.nameSearch?.products ?? []){ product in
+                    
+                        NavigationLink {
+                                selectedFood(barcode: product.barcode ?? "")
+                                .toolbar {
+                                    Button("Log") {
+                                        showingSheet.toggle()
+                                    }
+                                    .sheet(isPresented: $showingSheet, content: {
+                                        AddFoodLogView(foodFacts: foodFactsVM)
+                                    })
 
-//                    Text("\(product.productName ?? "")")
-
-                    NavigationLink {
-                            selectedFood(barcode: product.barcode ?? "")
-                            .toolbar {
-                                Button("Log") {
-                                    showingSheet.toggle()
+                                    
+                                    .foregroundColor(.blue)
                                 }
-                                .sheet(isPresented: $showingSheet, content: {
-                                    AddFoodLogView(foodFacts: foodFactsVM)
-                                })
+                            } label: {
+                                VStack (alignment: .leading){
+                                    Text("Name: \(product.productName ?? "not found")")
+                                    Text("KCAL (100g): \(product.nutrients.energyKcal100g?.description ?? "N/A")")
+                                }
 
-                                
-                                .foregroundColor(.blue)
-                            }
-                        } label: {
-                            VStack (alignment: .leading){
-                                Text("Name: \(product.productName ?? "not found")")
-                                Text("KCAL (100g): \(product.nutrients.energyKcal100g?.description ?? "N/A")")
                             }
 
-                        }
-
+                    }
+                }
+                else {
+                    Text("ERROR: Invalid or reenter. (Currently more than one word queries not working. Fix))")
                 }
             }
         }

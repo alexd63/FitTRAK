@@ -33,7 +33,7 @@ struct FitnessView: View {
                                     distanceSectionUI(sectionName: Sections.SectionNames.distance.rawValue)
                                 })
                                 
-                                sections.rowWithColumns(columnNames: [Sections.SectionNames.steps.rawValue, Sections.SectionNames.weight.rawValue], sectionsColor: colorTheme.sectionsColor, sectionTextSize: 18, healthAccessAtIndex: [false, true], navigationLinkFor: [Sections.SectionNames.steps.rawValue, Sections.SectionNames.weight.rawValue])
+                                sections.rowWithColumns(columnNames: [Sections.SectionNames.steps.rawValue, Sections.SectionNames.weight.rawValue], sectionsColor: colorTheme.sectionsColor, sectionTextSize: 18, healthAccessAtIndex: [true, false], navigationLinkFor: [Sections.SectionNames.steps.rawValue, Sections.SectionNames.weight.rawValue])
                             }
                         }
                         

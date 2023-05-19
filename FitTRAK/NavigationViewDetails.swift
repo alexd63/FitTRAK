@@ -16,27 +16,28 @@ struct NavigationViewDetails<Content: View>: View {
     
     var body: some View{
         NavigationView{
-            content()
-                .toolbar{
-                    ToolbarItem(placement: .navigationBarLeading){
-                        Button(action: {
-                            print("settings pressed")
-                        }, label: {
-                            Image(systemName: leadingToolbarItem)
-                        })
+            
+                content()
+                    .toolbar{
+                        ToolbarItem(placement: .navigationBarLeading){
+                            Button(action: {
+                                print("settings pressed")
+                            }, label: {
+                                Image(systemName: leadingToolbarItem)
+                            })
+                        }
+                        ToolbarItem(placement: .principal){
+                            Text(title)
+                                .font(.system(size: 24, weight: .light, design: .monospaced))
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing){
+                            Button(action: {
+                                print("profile pressed")
+                            }, label: {
+                                Image(systemName: trailingToolbarItem)
+                            })
+                        }
                     }
-                    ToolbarItem(placement: .principal){
-                        Text(title)
-                            .font(.system(size: 24, weight: .light, design: .monospaced))
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing){
-                        Button(action: {
-                            print("profile pressed")
-                        }, label: {
-                            Image(systemName: trailingToolbarItem)
-                        })
-                    }
-                }
             
         }
     }

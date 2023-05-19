@@ -10,6 +10,7 @@ import SwiftUI
 import HealthKit
 
 class UserDetails {
+    
     //Main user parameters
     var weight: Int
     var age: Int
@@ -22,6 +23,8 @@ class UserDetails {
     var carbs: Int
     var fats: Int
 
+    var healthStore: HKHealthStore?
+    
     init(weight: Int, age: Int, height: Int, activityLevel: ActivityLevel, calories: Int, proteins: Int, carbs: Int, fats: Int) {
         self.weight = weight
         self.age = age
@@ -31,15 +34,23 @@ class UserDetails {
         self.proteins = proteins
         self.carbs = carbs
         self.fats = fats
+        
+        if HKHealthStore.isHealthDataAvailable() {
+            healthStore = HKHealthStore()
+        }
     }
     
     
+    
+    
+    enum ActivityLevel: String {
+        case sedentary = "Sedentary"
+        case light = "Light"
+        case moderate = "Moderate"
+        case high = "High"
+        case extreme = "Extreme"
+    }
+    
 }
 
-enum ActivityLevel: String {
-    case sedentary = "Sedentary"
-    case light = "Light"
-    case moderate = "Moderate"
-    case high = "High"
-    case extreme = "Extreme"
-}
+

@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftUICharts
 
 //enum SectionNames: String, CaseIterable {
 //    case calories = "Calories"
@@ -18,6 +19,7 @@ import SwiftUI
 
 struct TRAKView: View {
     @ObservedObject var colorTheme: ColorTheme
+//    @ObservedObject private var viewManager: ViewManager
 //    private var backgroundColor: Color {
 //        colorTheme.darkMode ? Color.black : Color.white
 //    }
@@ -37,65 +39,51 @@ struct TRAKView: View {
         
     init(colorTheme: ColorTheme){
         self.colorTheme = colorTheme
+//        self.viewManager = viewManager
     }
     
     
     var body: some View{
         GeometryReader{ geometry in
             ZStack{
-                NavigationViewDetails(title: "TRAK", leadingToolbarItem: "gear", trailingToolbarItem: "person.fill"){
+
+                //Note: removed it from here because NavigationView should be on top level before the ZStack. (Moved to ContentView instead)
+//                NavigationViewDetails(title: "TRAK", leadingToolbarItem: "gear", trailingToolbarItem: "person.fill"){
                     ScrollView{
                         ZStack{
                             VStack(spacing: 160){
-//                                addHorizontalSections(sectionNames: [SectionNames.calories.rawValue, SectionNames.macros.rawValue], infoAtSection: [SectionNames.calories.rawValue, SectionNames.macros.rawValue])
-//                                    .allowsHitTesting(infoCardShowing ? false : true) // dont allow section to be pressed
+
                                 
                                 //Calories section
                                 sections.addHorizontalSections(sectionName: names.calories.rawValue, sectionsColor: colorTheme.sectionsColor, sectionUIFunc: {sectionName in
                                     caloriesSectionUI(sectionName: names.calories.rawValue)
-                                }, infoIncluded: true, infoButton: {sectionName in
+                                }, infoButton: {sectionName in
                                     infoButton(sectionName: names.calories.rawValue)
-                                })
+                                }, healthAccess: true)
                                 
                                 //macros section
                                 sections.addHorizontalSections(sectionName: names.macros.rawValue, sectionsColor: colorTheme.sectionsColor, sectionUIFunc: {sectionName in
                                     macrosSectionUI(sectionName: names.macros.rawValue)
-                                }, infoIncluded: true, infoButton: {sectionName in
+                                }, infoButton: {sectionName in
                                     infoButton(sectionName: names.macros.rawValue)
-                                })
+                                }, healthAccess: true)
                                 
                                 //water and logs columns
-                                sections.rowWithColumns(columnNames: [names.water.rawValue, names.logs.rawValue], sectionsColor: colorTheme.sectionsColor, sectionTextSize: sectionTextSize)
+                                sections.rowWithColumns(columnNames: [names.water.rawValue, names.logs.rawValue], sectionsColor: colorTheme.sectionsColor, sectionTextSize: sectionTextSize, healthAccessAtIndex: [true], navigationLinkFor: [Sections.SectionNames.water.rawValue])
+                                
                                 
                                 //daily quote
                                 sections.addHorizontalSections(sectionName: names.quote.rawValue, sectionsColor: colorTheme.sectionsColor, sectionUIFunc: {sectionName in
                                     quoteSectionUI(sectionName: names.quote.rawValue)//probably dont need this parameter
-                                }, infoIncluded: true, infoButton:{ sectionName in infoButton(sectionName:names.calories.rawValue)
-                                    
                                 })
+                                .padding(.top, -10)
 
-                                
-//                                section
-//                                Spacer(minLength: 10)
-                                
-//                                rowWithColumns(columnNames: [SectionNames.water.rawValue, SectionNames.logs.rawValue])
-//
-//                                addHorizontalSections(sectionNames: [SectionNames.quote.rawValue])
-//                                    .padding(.top, -10)
-                                //                                rowWithColumns(columnNames: [SectionNames.water.rawValue, SectionNames.logs.rawValue])
-                                
-                                //next idea: add weight tracking
-//                                addHorizontalSections(sectionNames: [SectionNames.quote.rawValue])
-
-//                                sections.addHorizontalSections(sectionNames: ["Weight"], sectionsColor: sectionsColor, sectionUIFunc: {sectionName in
-//                                    caloriesSectionUI(sectionName: "Cals")
-//                                }, infoButton: {sectionName in
-//                                    infoButton(sectionName: "Cals")
-//                                })
+//                                BarChartView(data: ChartData(values: [("2018 Q4",63150), ("2019 Q1",50900), ("2019 Q2",77550), ("2019 Q3",79600), ("2019 Q4",92550)]), title: "Sales", legend: "Quarterly", form: CGSize(width: 100, height: 100))
+//                                    // legend is optional
                             }
                         }
                     }
-                }
+//                } nav view
             }
             if infoCardShowing {
                 infoCardView(sectionName: currentInfoCard)
@@ -105,119 +93,9 @@ struct TRAKView: View {
         
     
     
-//    func addHorizontalSections(sectionNames: [String], infoAtSection: [String]? = nil) -> some View {
-//        let sectionsCornerRadius = 18.0
-//        
-//        let sectionsWidthMultiplier = 0.9
-//        let sectionsHeightMultplier = 16.0
-//        
-//        let infoButtonTopPad = 1.5
-//        let infoButtonRightPad = 0.1
-//        
-//        return GeometryReader{ geometry in
-//            VStack(spacing: 10){
-//                ForEach(sectionNames, id: \.self){ sectionName in
-//                    ZStack{
-//                        Button(action: {
-//                            print("section button pressed!")
-//                        }, label: {
-//                            ZStack{
-//                                //Rectangle sections
-//                                HStack{
-//                                    RoundedRectangle(cornerRadius: sectionsCornerRadius)
-//                                        .frame(width: geometry.size.width * sectionsWidthMultiplier, height: geometry.size.height * sectionsHeightMultplier)
-//                                        .foregroundColor(sectionsColor)
-//                                }
-//                                if sectionName == "Calories" {
-//                                    caloriesSectionUI(sectionName: sectionName)
-//                                }
-//                                if sectionName == "Macros" {
-//                                    macrosSectionUI(sectionName: sectionName)
-//                                }
-//                                if sectionName == "Daily Quote" {
-//                                    quoteSectionUI(sectionName: sectionName)
-//                                }
-//                                
-//                                
-//                            }
-//                        })
-//                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                        
-//                        if infoAtSection?.contains(sectionName) == true{
-//                            infoButton(sectionName: sectionName)
-//                                .padding(.top, geometry.size.height * infoButtonTopPad)
-//                                .padding(.trailing, geometry.size.width * infoButtonRightPad)
-//                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        
-//    }
+
     
     
-    func rowWithColumns(columnNames: [String]) -> some View {
-        let cornerRadius = 20.0
-        let sectionsWidthMultiplier = 0.43
-        let sectionsHeightMultipler = 15.0
-        
-        let imageHeight = 42.0
-        let imageWidth = 35.0
-        let frameHSSpacing = 3.0
-        
-        //        var calculateSpace: CGFloat {
-        //            var mustEqual = frameHSSpacing
-        //            var totalWidthHeight = imageWidth + imageHeight
-        //            var difference = mustEqual - totalWidthHeight
-        //            var newValue = difference + totalWidthHeight
-        //            return newValue
-        //        }
-        // 175 =
-        return ZStack{
-            GeometryReader{ geometry in
-                HStack(spacing: 15){
-                    ForEach(columnNames, id: \.self){columnName in
-                        ZStack{
-                            RoundedRectangle(cornerRadius: cornerRadius)
-                                .frame(width: geometry.size.width * sectionsWidthMultiplier, height: geometry.size.height * sectionsHeightMultipler)
-                                .foregroundColor(colorTheme.sectionsColor)
-                            VStack{
-                                Spacer()
-                                Text(columnName)
-                                    .customFont(size: sectionTextSize)
-                                    .foregroundColor(.white)
-                                Spacer()
-                                HStack{
-                                    Spacer()
-                                    if(columnName == "Water"){
-                                        Image(systemName: "drop.fill")
-                                            .resizable()
-                                            .frame(maxWidth: imageWidth, maxHeight: imageHeight)
-                                            .foregroundColor(.white)
-                                    }
-                                    else if (columnName == "Logs"){
-                                        Image(systemName: "note.text")
-                                            .resizable()
-                                            .frame(maxWidth: imageWidth, maxHeight: imageHeight)
-                                            .foregroundColor(.white)
-                                    }
-                                    
-                                    Spacer()
-                                    Text("0%")
-                                        .foregroundColor(.white)
-                                    Spacer()
-                                }
-                                .frame(maxWidth: geometry.size.width / frameHSSpacing)
-                                Spacer()
-                            }
-                        }
-                    }
-                }
-                .frame(maxWidth: .infinity, alignment: .center)
-            }
-        }
-    }
     
     func caloriesSectionUI(sectionName: String) -> some View {
         let totalKcalTextSize = 18.0
@@ -429,6 +307,7 @@ struct TRAKView: View {
                     .customFont(size: cfpSize)
                 
             }.padding(.top, cfgBottomPadding)
+            
             
         }
     }

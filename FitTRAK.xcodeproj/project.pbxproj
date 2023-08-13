@@ -32,7 +32,6 @@
 		B9E20A7D2A0AF341004B798D /* SelectedFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E20A7C2A0AF341004B798D /* SelectedFoodView.swift */; };
 		B9F605B129F9944700AFB308 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F605B029F9944700AFB308 /* ColorTheme.swift */; };
 		B9F605B429FA5F7E00AFB308 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = B9F605B329FA5F7E00AFB308 /* SwiftUICharts */; };
-		B9F605B829FAF08600AFB308 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F605B729FAF08600AFB308 /* ViewManager.swift */; };
 		B9F605BA29FB29A600AFB308 /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F605B929FB29A600AFB308 /* HealthStore.swift */; };
 		B9F605C329FCA9F700AFB308 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F605C229FCA9F700AFB308 /* Activity.swift */; };
 		B9F605C529FCAD8600AFB308 /* HealthStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F605C429FCAD8500AFB308 /* HealthStat.swift */; };
@@ -84,7 +83,6 @@
 		B9E20A782A05F398004B798D /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		B9E20A7C2A0AF341004B798D /* SelectedFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedFoodView.swift; sourceTree = "<group>"; };
 		B9F605B029F9944700AFB308 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
-		B9F605B729FAF08600AFB308 /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		B9F605B929FB29A600AFB308 /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		B9F605BB29FB2AEC00AFB308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B9F605BC29FB2E4100AFB308 /* FitTRAK.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FitTRAK.entitlements; sourceTree = "<group>"; };
@@ -155,7 +153,6 @@
 				B9E20A782A05F398004B798D /* LogView.swift */,
 				B92D74D42A11912E0031CCD6 /* AddFoodLogView.swift */,
 				B92D74D22A117DD80031CCD6 /* LogDetails.swift */,
-				B9F605B729FAF08600AFB308 /* ViewManager.swift */,
 				B9F605B029F9944700AFB308 /* ColorTheme.swift */,
 				B96AADFB29ECD3BD00936430 /* NavigationViewDetails.swift */,
 				B96AADF129EC837200936430 /* FitnessView.swift */,
@@ -360,7 +357,6 @@
 				B9E20A792A05F398004B798D /* LogView.swift in Sources */,
 				B9E209C329FCF3AD004B798D /* DetailView.swift in Sources */,
 				B9F605BA29FB29A600AFB308 /* HealthStore.swift in Sources */,
-				B9F605B829FAF08600AFB308 /* ViewManager.swift in Sources */,
 				B9E20A772A0582A1004B798D /* FoodFactsViewModel.swift in Sources */,
 				B96AADF229EC837200936430 /* FitnessView.swift in Sources */,
 				B96AADFC29ECD3BD00936430 /* NavigationViewDetails.swift in Sources */,
